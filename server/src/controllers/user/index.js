@@ -6,11 +6,23 @@ const login = async ({ request }) => {
     return null;
   }
   let UserData = await User.Query({ username, password });
-  // 没有注册 帮他注册
-  if (!UserData.length) {
-    UserData = await User.Create({ username, password });
-  }
+
+  return UserData[0] ? { id: UserData[0].id } : null;
+};
+
+const register = async ({ request }) => {
+  const { username, password } = request.body;
+
+  await User.Create({ username, password });
+  const UserData = await findAll({ request });
+  console.log('UserData', UserData);
   return UserData;
 };
 
-module.exports = { login };
+const findAll = async ({ request }) => {
+  const { username } = request.body;
+  let UserData = await User.FindAll({ username });
+  return UserData[0] ? { id: UserData[0].id } : null;
+};
+
+module.exports = { login, register, findAll };

@@ -7,11 +7,14 @@ const sequelize = new Sequelize('db', 'xuchao', '123456', {
  *
  * @param {string} query sql
  */
-module.exports = async (query) => {
+module.exports = async (
+  query,
+  options = { type: Sequelize.QueryTypes.SELECT },
+) => {
   return await sequelize.query(
     {
       query: query,
     },
-    { type: Sequelize.QueryTypes.SELECT },
+    options,
   );
 };
