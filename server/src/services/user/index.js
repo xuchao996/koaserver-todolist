@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const db = require('../../services/connect');
+const { sqlquery: db } = require('../../services/connect');
 
 const Query = async ({ username, password }) => {
   return await db(

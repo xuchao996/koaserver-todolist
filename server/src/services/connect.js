@@ -3,11 +3,16 @@ const sequelize = new Sequelize('db', 'xuchao', '123456', {
   host: '124.70.152.179',
   dialect: 'mysql' /* 选择 'mysql' | 'mariadb' | 'postgres' | 'mssql' 其一 */,
 });
+// 创建模型
+sequelize.sync({
+  force: false,
+});
 /**
  *
  * @param {string} query sql
  */
-module.exports = async (
+
+const sqlQuery = async (
   query,
   options = { type: Sequelize.QueryTypes.SELECT },
 ) => {
@@ -17,4 +22,9 @@ module.exports = async (
     },
     options,
   );
+};
+
+module.exports = {
+  sqlquery: sqlQuery,
+  sequelize,
 };

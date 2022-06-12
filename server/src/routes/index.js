@@ -4,6 +4,7 @@ const { login, register, findAll } = require('../controllers/user');
 
 const errcodeMap = require('@errcode/index.js');
 const { factoryResponse } = require('@utils');
+const todos = require('./todo');
 
 module.exports = (router) => {
   router.get('/', (ctx, next) => {
@@ -46,4 +47,5 @@ module.exports = (router) => {
   router.get('/users', async (ctx) => {
     d;
   });
+  todos(router);
 };

@@ -21,6 +21,7 @@
   },
   "_moduleAliases": {
     "@": "src",
+    "@model": "src/models",
     "@errcode": "src/utils/errcode",
     "@utils": "src/utils"
   }
