@@ -5,7 +5,7 @@ const sequelize = new Sequelize('db', 'xuchao', '123456', {
 });
 // 创建模型
 sequelize.sync({
-  force: false,
+  force: true,
 });
 /**
  *
