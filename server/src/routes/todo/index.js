@@ -1,3 +1,5 @@
+require('module-alias/register');
+
 const { factoryResponse } = require('@utils');
 const TodoController = require('../../controllers/todo');
 

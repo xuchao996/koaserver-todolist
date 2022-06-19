@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["*"],
-      "@/utils": ["./utils/*"],
-      "@errcode/*": ["./utils/errcode/*"]
+      "@/*": ["./src/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@errcode/*": ["./src/utils/errcode/*"]
     }
   },
-  "include": ["./src/"],
-  "exclude": []
+  "include": ["./src/"]
+  // "exclude": []
 }
