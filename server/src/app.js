@@ -21,13 +21,13 @@ app.use(bodyParser());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.use(
-  koaJwt({
-    secret: JWT_SECRET,
-    debug: true,
-    getToken: (ctx) => ctx.headers.authorization,
-  }),
-);
+// app.use(
+//   koaJwt({
+//     secret: JWT_SECRET,
+//     debug: true,
+//     getToken: (ctx) => ctx.headers.authorization,
+//   }),
+// );
 
 router.get('/auth', async (ctx, next) => {
   console.log('ctx.state', ctx.state);

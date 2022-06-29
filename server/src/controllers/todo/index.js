@@ -1,12 +1,12 @@
 // const { sqlquery: db } = require('../../services/connect');
 const TodoModel = require('@model/todo');
-console.log('TodoModel.prototype', TodoModel.prototype);
+
 const Todo = {
   getListByUserId: async (id) => {
     const res = await TodoModel.findAll({
       attributes: ['id', 'title', 'createdAt'],
       where: {
-        userid: 9,
+        userid: id,
       },
     });
     return res;

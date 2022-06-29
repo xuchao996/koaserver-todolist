@@ -16,8 +16,10 @@ module.exports = (router) => {
     ctx.response.body = factoryResponse(0, Todo);
   });
   // 新增
-  router.put('/todo', async ({ request }) => {
-    const { body } = request;
+  router.put('/todo', async (ctx) => {
+    console.log(Object.keys(ctx.request.body));
+    const { body } = ctx.request;
+    console.info(body);
     const res = await TodoController.Create(body);
     ctx.response.body = factoryResponse(0, res);
   });

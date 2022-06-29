@@ -1,11 +1,11 @@
 const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize('db', 'xuchao', '123456', {
-  host: '124.70.152.179',
+  host: '47.92.209.41',
   dialect: 'mysql' /* 选择 'mysql' | 'mariadb' | 'postgres' | 'mssql' 其一 */,
 });
 // 创建模型
 sequelize.sync({
-  force: true,
+  // force: true, 真实场景应该用不到
 });
 /**
  *
