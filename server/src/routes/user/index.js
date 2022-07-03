@@ -18,14 +18,9 @@ module.exports = (router) => {
       console.log('jwt-token', token);
       Object.assign(res, { 'jwt-token': token });
     }
-    const responseData = {
-      errcode: errCode,
-      errmsg: errcodeMap[errCode],
-      data: res,
-    };
     ctx.response.body = {
       code: 0,
-      data: responseData,
+      data: factoryResponse(errCode, res),
     };
   });
 
