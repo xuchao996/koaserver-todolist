@@ -19,25 +19,15 @@ app.use(bodyParser());
 //   ctx.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
 //   await next();
 // });
+app.use(
+  koaJwt({
+    secret: JWT_SECRET,
+    debug: true,
+    getToken: (ctx) => ctx.headers.authorization,
+  }).unless({ path: [/login/, /register/] }),
+);
 app.use(router.routes());
 app.use(router.allowedMethods());
-
-// app.use(
-//   koaJwt({
-//     secret: JWT_SECRET,
-//     debug: true,
-//     getToken: (ctx) => ctx.headers.authorization,
-//   }),
-// );
-
-router.get('/auth', async (ctx, next) => {
-  console.log('ctx.state', ctx.state);
-  ctx.body = ctx.state.user; // 该中间件将验证后的用户数据直接返回给浏览器
-});
-router.get('/todolist', async (ctx, next) => {
-  console.log('ctx.state', ctx.state);
-  ctx.body = ctx.state.user; // 该中间件将验证后的用户数据直接返回给浏览器
-});
 
 require('./src/routes')(router);
 

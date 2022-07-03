@@ -15,7 +15,6 @@ module.exports = (router) => {
       const token = jwt.sign({ useid: res.id }, JWT_SECRET, {
         expiresIn: '1d',
       });
-      console.log('jwt-token', token);
       Object.assign(res, { 'jwt-token': token });
     }
     ctx.response.body = {
@@ -24,7 +23,7 @@ module.exports = (router) => {
     };
   });
 
-  router.put('/register', async (ctx) => {
+  router.post('/register', async (ctx) => {
     let res = await findAll(ctx);
     let responseData;
     if (res) {
