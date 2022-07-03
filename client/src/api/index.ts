@@ -2,6 +2,7 @@
 // const domain = "http://124.70.152.179:3000/";
 const domain = "/api/";
 export const Login = domain + "login";
+export const Register = domain + "register";
 export const TodoListByUserid = domain + "todolist/";
 export const Todo = domain + "todo";
 

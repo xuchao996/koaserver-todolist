@@ -1,7 +1,7 @@
 import { useAsyncEffect } from "ahooks";
 import { useContext, useCallback, useState, useEffect } from "react";
 
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import {
   Button,
@@ -113,9 +113,19 @@ const Home = (props) => {
         break;
     }
   };
-
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/login", { replace: true });
+  };
   return (
-    <div>
+    <div className="home-container">
+      <div className="home-header">
+        <div></div>
+        <div className="">
+          <Button onClick={logout}>退出登录</Button>
+        </div>
+      </div>
       <List>
         {todoList.map((todo, index) => (
           <SwipeAction

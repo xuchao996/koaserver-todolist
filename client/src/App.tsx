@@ -13,7 +13,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   return (
     <div className="page">
-      <img className="logo" src={logo} alt="" />
+      {/* <img className="logo" src={logo} alt="" /> */}
       <LoadingContext.Provider value={{ loading: loading, setLoading }}>
         <Routes />
       </LoadingContext.Provider>
