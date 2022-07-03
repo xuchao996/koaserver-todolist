@@ -1,7 +1,22 @@
-import React from "react";
+import { memo } from "react";
+import { List } from "antd-mobile";
+import classnames from "classnames";
+const TodoItem = (props) => {
+  const { todo, index } = props;
 
-const TodoItem = () => {
-  return <div>TodoItem</div>;
+  return (
+    <List.Item onClick={() => props.clickItemHandler(todo)} arrow={false}>
+      <div
+        className={classnames("item", todo.status === 1 ? "is-completed" : "")}
+        style={{
+          backgroundImage: `url('static/img/${index + 1}.jpg')`,
+        }}
+      >
+        <div className="item-title">{todo.title}</div>
+        <div className="item-desc">{todo.content}</div>
+      </div>
+    </List.Item>
+  );
 };
 
-export default TodoItem;
+export default memo(TodoItem);

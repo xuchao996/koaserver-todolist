@@ -3,3 +3,12 @@
 const domain = "/api/";
 export const Login = domain + "login";
 export const TodoListByUserid = domain + "todolist/";
+export const Todo = domain + "todo";
+
+export type todoId = string;
+export type todo = {
+  id: todoId;
+  title: string;
+  content: string;
+  status: number;
+};

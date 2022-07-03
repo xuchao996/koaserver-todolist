@@ -15,12 +15,19 @@ export default defineConfig({
   },
 
   server: {
+    host: "0.0.0.0",
     proxy: {
       "/api": {
         target: "http://localhost:3000",
-        // target: "http://124.70.152.179:3000/",
+        // target: "http://47.92.209.41:3000/",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+      "/static": {
+        target: "http://localhost:3000",
+        // target: "http://47.92.209.41:3000/",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/static/, ""),
       },
     },
   },

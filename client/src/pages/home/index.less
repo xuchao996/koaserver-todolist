@@ -1,0 +1,35 @@
+.item {
+  background-position: center;
+  height: 80px;
+  padding: 12px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  .item-title {
+    color: #00ffff;
+    text-shadow: 1px 2px 2px #0fffff;
+    font-weight: bolder;
+  }
+
+  .item-desc {
+    font-size: 12px;
+    color: rgba(00, 255, 255, 0.7);
+    text-shadow: 1px 0px 2px #0fffff;
+  }
+  &.is-completed {
+    .item-title {
+      text-decoration: line-through;
+    }
+    .item-desc {
+      text-decoration: line-through;
+    }
+  }
+}
+
+.adm-list-item-content-main {
+  padding: 0;
+}
+
+.adm-list-item-content {
+  padding: 0;
+  margin-top: 12px;
+}
