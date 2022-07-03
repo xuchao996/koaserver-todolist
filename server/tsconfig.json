@@ -7,6 +7,6 @@
       "@errcode/*": ["./src/utils/errcode/*"]
     }
   },
-  "include": ["./src/"]
+  "include": ["./src/", "app.js"]
   // "exclude": []
 }

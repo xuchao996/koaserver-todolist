@@ -4,7 +4,7 @@ const TodoModel = require('@model/todo');
 const Todo = {
   getListByUserId: async (id) => {
     const res = await TodoModel.findAll({
-      attributes: ['id', 'title', 'createdAt'],
+      // attributes: ['id', 'title', 'createdAt'],
       where: {
         userid: id,
       },
@@ -23,16 +23,15 @@ const Todo = {
     return await TodoModel.create(requestBody);
   },
   Update: async (todoid, data) => {
-    return await TodoModel.update(
-      {
-        ...data,
+    const currentData = await TodoModel.findOne({
+      where: {
+        id: todoid,
       },
-      {
-        where: {
-          id: todoid,
-        },
-      },
-    );
+    });
+    Object.assign(currentData, data);
+    console.log('currentData', currentData);
+
+    return await currentData.save(currentData);
   },
   Delete: async (todoid) => {
     return await TodoModel.destroy({

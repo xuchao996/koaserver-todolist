@@ -17,9 +17,7 @@ module.exports = (router) => {
   });
   // 新增
   router.put('/todo', async (ctx) => {
-    console.log(Object.keys(ctx.request.body));
     const { body } = ctx.request;
-    console.info(body);
     const res = await TodoController.Create(body);
     ctx.response.body = factoryResponse(0, res);
   });

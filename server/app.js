@@ -1,12 +1,13 @@
 const Koa = require('koa');
 const KoaRouter = require('koa-router');
 const bodyParser = require('koa-bodyparser');
-
+const staticServer = require('koa-static');
 const app = new Koa();
 const koaJwt = require('koa-jwt');
 const router = new KoaRouter();
-const { JWT_SECRET } = require('../config/index');
+const { JWT_SECRET } = require('./config/index');
 
+app.use(staticServer('./static', { maxAge: 100000 }));
 app.use(bodyParser());
 
 // app.use(async (ctx, next) => {
@@ -38,7 +39,7 @@ router.get('/todolist', async (ctx, next) => {
   ctx.body = ctx.state.user; // 该中间件将验证后的用户数据直接返回给浏览器
 });
 
-require('./routes')(router);
+require('./src/routes')(router);
 
 app.listen(3000, () => {
   console.log('server is running at http://localhost:3000');
