@@ -9,7 +9,8 @@
   },
   "devDependencies": {
     "koa": "^2.13.4",
-    "koa-router": "^10.1.1"
+    "koa-router": "^10.1.1",
+    "node-schedule": "^2.1.0"
   },
   "dependencies": {
     "jsonwebtoken": "^8.5.1",
