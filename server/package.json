@@ -5,7 +5,8 @@
   "author": "徐超 <chao.xu996@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "server": "nodemon ./app.js"
+    "server": "nodemon ./app.js",
+    "arg": "node ./arg.js"
   },
   "devDependencies": {
     "koa": "^2.13.4",

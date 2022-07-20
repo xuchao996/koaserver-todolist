@@ -2,27 +2,35 @@ const { sequelize } = require('../../services/connect');
 
 const { Model, DataTypes } = require('sequelize');
 
-class Todo extends Model {}
+class TodoGroup extends Model {}
 
-Todo.init(
+TodoGroup.init(
   {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true,
+      //   primaryKey: true,
     },
-    title: {
-      type: DataTypes.STRING(20),
-    },
-    content: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    state: {
+    user_id: {
       type: DataTypes.INTEGER,
     },
-    time: {
+    todogroup_id: {
       type: DataTypes.INTEGER,
+    },
+    todogroup_state: {
+      type: DataTypes.INTEGER,
+    },
+    todogroup_time: {
+      type: DataTypes.DATE,
+    },
+    todo_id: {
+      type: DataTypes.INTEGER,
+    },
+    todo_state: {
+      type: DataTypes.INTEGER,
+    },
+    todo_time: {
+      type: DataTypes.DATE,
     },
     create_time: {
       type: DataTypes.DATE,
@@ -35,9 +43,6 @@ Todo.init(
   },
   {
     sequelize,
-    tableName: 'todo',
-    paranoid: false, // 一个 paranoid 表是一个被告知删除记录时不会真正删除它的表.反而一个名为 deletedAt 的特殊列会将其值设置为该删除请求的时间戳.
+    tableName: 'todo_todo-group',
   },
 );
-
-module.exports = Todo;

@@ -2,9 +2,9 @@ const { sequelize } = require('../../services/connect');
 
 const { Model, DataTypes } = require('sequelize');
 
-class Todo extends Model {}
+class TodoGroup extends Model {}
 
-Todo.init(
+TodoGroup.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,17 +12,13 @@ Todo.init(
       primaryKey: true,
     },
     title: {
-      type: DataTypes.STRING(20),
-    },
-    content: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      type: DataTypes.STRING(50),
     },
     state: {
       type: DataTypes.INTEGER,
     },
     time: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DATE,
     },
     create_time: {
       type: DataTypes.DATE,
@@ -35,9 +31,6 @@ Todo.init(
   },
   {
     sequelize,
-    tableName: 'todo',
-    paranoid: false, // 一个 paranoid 表是一个被告知删除记录时不会真正删除它的表.反而一个名为 deletedAt 的特殊列会将其值设置为该删除请求的时间戳.
+    tableName: 'todo-group',
   },
 );
-
-module.exports = Todo;
