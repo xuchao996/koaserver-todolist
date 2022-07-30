@@ -3,8 +3,9 @@ const { Sequelize } = require('sequelize');
 //   host: '47.92.209.41',
 //   dialect: 'mysql' /* 选择 'mysql' | 'mariadb' | 'postgres' | 'mssql' 其一 */,
 // });
-const sequelize = new Sequelize('notes', 'root', '12345678', {
-  host: 'localhost',
+const { MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD, MYSQL_HOST } = process.env;
+const sequelize = new Sequelize(MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD, {
+  host: MYSQL_HOST,
   dialect: 'mysql' /* 选择 'mysql' | 'mariadb' | 'postgres' | 'mssql' 其一 */,
 });
 

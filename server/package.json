@@ -6,14 +6,17 @@
   "license": "MIT",
   "scripts": {
     "server": "nodemon ./app.js",
-    "arg": "node ./arg.js"
+    "arg:prod": "node ./arg.js"
   },
   "devDependencies": {
     "koa": "^2.13.4",
     "koa-router": "^10.1.1",
-    "node-schedule": "^2.1.0"
+    "node-schedule": "^2.1.0",
+    "node-xlsx": "^0.21.0"
   },
   "dependencies": {
+    "dotenv": "^16.0.1",
+    "dotenv-expand": "^8.0.3",
     "jsonwebtoken": "^8.5.1",
     "koa-bodyparser": "^4.3.0",
     "koa-jwt": "^4.0.3",

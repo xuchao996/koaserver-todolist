@@ -6,6 +6,13 @@ const app = new Koa();
 const koaJwt = require('koa-jwt');
 const router = new KoaRouter();
 const { JWT_SECRET } = require('./config/index');
+const loadEnv = require('./src/utils/loadEnv.js');
+
+let mode = process.argv[process.argv.indexOf('--mode') + 1];
+if (mode) {
+  loadEnv(mode);
+}
+loadEnv();
 
 app.use(staticServer('./static', { maxAge: 100000 }));
 app.use(bodyParser());
