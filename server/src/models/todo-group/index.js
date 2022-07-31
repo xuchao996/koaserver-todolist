@@ -13,24 +13,28 @@ TodoGroup.init(
     },
     title: {
       type: DataTypes.STRING(50),
+      allowNull: false,
     },
     state: {
       type: DataTypes.INTEGER,
     },
     time: {
       type: DataTypes.DATE,
+      allowNull: false,
     },
     create_time: {
       type: DataTypes.DATE,
-      allowNull: true,
     },
     update_time: {
       type: DataTypes.DATE,
-      allowNull: true,
     },
   },
   {
     sequelize,
+    createdAt: false,
+    updatedAt: false,
     tableName: 'todo-group',
   },
 );
+
+module.exports = TodoGroup;

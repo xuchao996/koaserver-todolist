@@ -1,9 +1,12 @@
+const koaRouter = require('koa-router');
+const router = new koaRouter('todogroup');
+
 require('module-alias/register');
 
 const { factoryResponse } = require('@utils');
 const TodoController = require('../../controllers/todo');
 
-module.exports = (router) => {
+module.exports = () => {
   // 查看列表
   router.get('/todolist/:userid', async (ctx) => {
     const { params } = ctx;
@@ -41,4 +44,5 @@ module.exports = (router) => {
     const res = await TodoController.getDetailByTodoid(todoid);
     ctx.response.body = factoryResponse(0, res);
   });
+  return router;
 };

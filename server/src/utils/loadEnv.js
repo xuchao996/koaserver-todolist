@@ -25,7 +25,6 @@ const loadEnv = (mode = '') => {
   };
   load(filePath); // 取前面一个值
   load(localPath);
-  console.log(process.env);
 };
 
 module.exports = loadEnv;

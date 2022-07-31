@@ -9,7 +9,7 @@ const Query = async ({ username, password }) => {
 };
 const Create = async ({ username, password }) => {
   return await db(
-    `insert into user values(null, '${username}', md5('${password}'))`,
+    `insert into user(id, name, password) values(null, '${username}', md5('${password}'))`,
     { type: Sequelize.QueryTypes.INSERT },
   );
 };

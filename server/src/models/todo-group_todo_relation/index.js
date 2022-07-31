@@ -2,14 +2,17 @@ const { sequelize } = require('../../services/connect');
 
 const { Model, DataTypes } = require('sequelize');
 
-class TodoGroup extends Model {}
+class TodoGroup_Todo_Map extends Model {}
 
-TodoGroup.init(
+TodoGroup_Todo_Map.init(
   {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       //   primaryKey: true,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
     },
     todogroup_id: {
       type: DataTypes.INTEGER,
@@ -31,3 +34,5 @@ TodoGroup.init(
     tableName: 'todo-group_todo_relation',
   },
 );
+
+module.exports = TodoGroup_Todo_Map;
