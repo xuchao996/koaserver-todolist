@@ -27,3 +27,5 @@ User.init(
     // paranoid: false, // 一个 paranoid 表是一个被告知删除记录时不会真正删除它的表.反而一个名为 deletedAt 的特殊列会将其值设置为该删除请求的时间戳.
   },
 );
+
+module.exports = User;

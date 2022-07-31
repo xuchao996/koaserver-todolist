@@ -2,3 +2,4 @@ servers/node_modules
 server/node_modules
 client/node_modules
 clients/node_modules
+client/dist/

@@ -1,4 +1,5 @@
 const TodoGroupModel = require('@model/todo-group');
+const TodoGroupTodoRelationModel = require('@model/todo-group_todo_relation');
 module.exports = {
   getList: async () => {
     const res = await TodoGroupModel.findAll();
@@ -16,7 +17,12 @@ module.exports = {
     });
   },
   async Create(requestBody) {
-    return await TodoGroupModel.create(requestBody);
+    const todogroup = await TodoGroupModel.create(requestBody);
+    const param = {
+      todogroupId: todogroup.id,
+      userId: requestBody.userId,
+    };
+    return await TodoGroupTodoRelationModel.create(param);
   },
   Update: async (todogroupId, data) => {
     const currentData = await TodoGroupModel.findOne({
