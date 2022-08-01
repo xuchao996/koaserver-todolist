@@ -1,3 +1,7 @@
+/**
+ * @author
+ * @description 这个表不要冗余
+ */
 const { sequelize } = require('../../services/connect');
 
 const { Model, DataTypes } = require('sequelize');
@@ -24,7 +28,8 @@ TodoGroup_Todo_Map.init(
       field: 'todogroup_id',
       type: DataTypes.INTEGER,
     },
-    todo_id: {
+    todoId: {
+      field: 'todo_id',
       type: DataTypes.INTEGER,
     },
     create_time: {

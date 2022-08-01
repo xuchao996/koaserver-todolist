@@ -5,11 +5,11 @@ const path = require('path');
 
 const login = async ({ request }) => {
   const { username, password } = request.body;
+  console.log(username, password);
   if (!username || !password) {
     return null;
   }
   let UserData = await User.Query({ username, password });
-
   return UserData[0] ? { id: UserData[0].id } : null;
 };
 

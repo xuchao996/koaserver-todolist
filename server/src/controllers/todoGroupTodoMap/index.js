@@ -1,7 +1,7 @@
-const TodoGroupModel = require('@model/todo-group');
+const TodogroupTodoRelation = require('@model/todo-group_todo_relation');
 module.exports = {
   getList: async (id) => {
-    const res = await TodoGroupModel.findAll();
+    const res = await TodogroupTodoRelation.findAll();
     return res;
   },
   ListByCurrentTime() {
@@ -9,7 +9,7 @@ module.exports = {
   },
   ListByTime(date) {},
   async Find(todogroupId) {
-    return await TodoGroupModel.findOne({
+    return await TodogroupTodoRelation.findOne({
       where: {
         id: todogroupId,
       },
@@ -17,10 +17,10 @@ module.exports = {
   },
   //
   async Create(requestBody) {
-    return await TodoGroupModel.create(requestBody);
+    return await TodogroupTodoRelation.create(requestBody);
   },
   Update: async (todogroupId, data) => {
-    const currentData = await TodoGroupModel.findOne({
+    const currentData = await TodogroupTodoRelation.findOne({
       where: {
         id: todogroupId,
       },
@@ -31,7 +31,7 @@ module.exports = {
     return await currentData.save(currentData);
   },
   Delete: async (todogroupId) => {
-    return await TodoGroupModel.destroy({
+    return await TodogroupTodoRelation.destroy({
       where: {
         id: todogroupId,
       },
