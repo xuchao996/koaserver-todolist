@@ -15,9 +15,13 @@ module.exports = () => {
     const errCode = res ? '1000' : '1001';
     if (errCode === '1000') {
       // 下发token
-      const token = jwt.sign({ useid: res.id }, JWT_SECRET, {
-        expiresIn: '1d',
-      });
+      const token = jwt.sign(
+        { userid: res.id, username: res.name },
+        JWT_SECRET,
+        {
+          expiresIn: '1d',
+        },
+      );
       Object.assign(res, { 'jwt-token': token });
     }
     ctx.response.body = {

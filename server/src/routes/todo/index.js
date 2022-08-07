@@ -8,9 +8,8 @@ const TodoController = require('../../controllers/todo');
 const TodoGroupTodoRelationController = require('../../controllers/todoGroupTodoMap');
 module.exports = () => {
   // 查看列表
-  router.get('/list/:userid', async (ctx) => {
-    const { params } = ctx;
-    const { userid } = params;
+  router.get('/list', async (ctx) => {
+    const { userid } = ctx.state.user;
     if (!userid) {
       return (ctx.response.body = factoryResponse(1004));
     }
@@ -21,13 +20,17 @@ module.exports = () => {
   // 新增
   router.post('/', async (ctx) => {
     const { body } = ctx.request;
-    console.log('body', body);
-    const res = await TodoController.Create(body);
+    const params = {
+      ...body,
+      userId: ctx.state.user.userid,
+    };
+    console.log('params', params);
+    const res = await TodoController.Create(params);
     const { id } = res;
     const param = {
       todoId: id,
       todogroupId: body.todogroupId,
-      userId: body.userId,
+      userId: ctx.state.user.userid,
     };
     await TodoGroupTodoRelationController.Create(param);
 

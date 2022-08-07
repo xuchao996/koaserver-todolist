@@ -5,12 +5,16 @@ const path = require('path');
 
 const login = async ({ request }) => {
   const { username, password } = request.body;
-  console.log(username, password);
   if (!username || !password) {
     return null;
   }
   let UserData = await User.Query({ username, password });
-  return UserData[0] ? { id: UserData[0].id } : null;
+  if (UserData[0]) {
+    delete UserData[0].password;
+    return { ...UserData[0] };
+  } else {
+    return null;
+  }
 };
 
 const findAll = async (ctx) => {

@@ -4,9 +4,8 @@ const TodoModel = require('@model/todo');
 const Todo = {
   getListByUserId: async (id) => {
     const res = await TodoModel.findAll({
-      // attributes: ['id', 'title', 'createdAt'],
       where: {
-        userid: id,
+        userId: id,
       },
     });
     return res;

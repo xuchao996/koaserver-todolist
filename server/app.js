@@ -30,12 +30,20 @@ app.use(
   koaJwt({
     secret: JWT_SECRET,
     debug: true,
-    getToken: (ctx) => ctx.headers.authorization,
+    // getToken: (ctx) => ctx.headers.authorization,
   }).unless({ path: [/login/, /register/] }),
 );
+const verifyUser = async (ctx, next) => {
+  const token = ctx.headers.authorization;
+  console.log(token);
+  // const
+  await next();
+};
 app.use(router.routes());
 app.use(router.allowedMethods());
-
+router.get('/test', (ctx, next) => {
+  ctx.body = ctx.state.user;
+});
 require('./src/routes')(router);
 
 app.listen(3000, () => {

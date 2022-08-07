@@ -8,9 +8,8 @@ const router = new koaRouter('todogroup');
 
 module.exports = () => {
   // 查看列表
-  router.get('/list/:userid', async (ctx) => {
-    const { params } = ctx;
-    const { userid } = params;
+  router.get('/list', async (ctx) => {
+    const { userid } = ctx.state.user;
     if (!userid) {
       return (ctx.response.body = factoryResponse(1004));
     }
