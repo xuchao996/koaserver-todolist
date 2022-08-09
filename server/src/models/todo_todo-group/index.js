@@ -1,3 +1,6 @@
+/**
+ * 这个表是中间表，拿来进行同步的
+ */
 const { sequelize } = require('../../services/connect');
 
 const { Model, DataTypes } = require('sequelize');
@@ -9,34 +12,49 @@ TodoGroup.init(
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      //   primaryKey: true,
+      primaryKey: true,
     },
-    user_id: {
+    userId: {
+      field: 'user_id',
       type: DataTypes.INTEGER,
     },
-    todogroup_id: {
+    todogroupId: {
+      field: 'todogroup_id',
       type: DataTypes.INTEGER,
+      allowNull: true,
     },
-    todogroup_state: {
+    todogroupState: {
+      field: 'todogroup_state',
       type: DataTypes.INTEGER,
+      allowNull: true,
     },
-    todogroup_time: {
-      type: DataTypes.DATE,
-    },
-    todo_id: {
-      type: DataTypes.INTEGER,
-    },
-    todo_state: {
-      type: DataTypes.INTEGER,
-    },
-    todo_time: {
-      type: DataTypes.DATE,
-    },
-    create_time: {
+    todogroupTime: {
+      field: 'todogroup_time',
       type: DataTypes.DATE,
       allowNull: true,
     },
-    update_time: {
+    todoId: {
+      field: 'todo_id',
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    todoState: {
+      field: 'todo_state',
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    todoTime: {
+      field: 'todo_time',
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    createTime: {
+      field: 'create-time',
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    updateTime: {
+      field: 'update_time',
       type: DataTypes.DATE,
       allowNull: true,
     },
@@ -49,3 +67,5 @@ TodoGroup.init(
     sequelize,
   },
 );
+
+module.exports = TodoGroup;

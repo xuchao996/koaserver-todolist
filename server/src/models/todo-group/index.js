@@ -18,6 +18,10 @@ TodoGroup.init(
     state: {
       type: DataTypes.INTEGER,
     },
+    userId: {
+      field: 'user_id',
+      type: DataTypes.INTEGER,
+    },
     time: {
       type: DataTypes.DATE,
       allowNull: false,

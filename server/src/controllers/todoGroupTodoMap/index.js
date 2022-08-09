@@ -1,7 +1,15 @@
 const TodogroupTodoRelation = require('@model/todo-group_todo_relation');
 module.exports = {
-  getList: async (id) => {
+  async getList() {
     const res = await TodogroupTodoRelation.findAll();
+    return res;
+  },
+  async getListByParams(params) {
+    const res = await TodogroupTodoRelation.findAll({
+      where: {
+        ...params,
+      },
+    });
     return res;
   },
   ListByCurrentTime() {
