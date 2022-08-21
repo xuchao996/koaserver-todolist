@@ -1,4 +1,4 @@
-const TodoModel = require('@model/todo');
+const TodoModel = require('@models/todo');
 
 const Todo = {
   getListByUserId: async (id) => {

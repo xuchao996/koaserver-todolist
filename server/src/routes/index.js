@@ -1,6 +1,7 @@
 const todos = require('./todo');
 const user = require('./user');
 const todogroup = require('./todogroup');
+const todoTodogroup = require('./todoTodoGroup');
 const sync = require('./sync');
 
 const crypto = require('crypto');
@@ -11,6 +12,7 @@ module.exports = (rootRouter) => {
   const todogroupRouter = todogroup();
   const todoRouter = todos();
   const userRouter = user();
+  const todoTodogroupRouter = todoTodogroup();
 
   const verifyUser = async (ctx, next) => {
     let token = ctx.headers.authorization;
@@ -52,6 +54,12 @@ module.exports = (rootRouter) => {
     '/todogroup',
     todogroupRouter.routes(),
     todogroupRouter.allowedMethods(),
+  );
+
+  rootRouter.use(
+    '/today',
+    todoTodogroupRouter.routes(),
+    todoTodogroupRouter.allowedMethods(),
   );
 
   rootRouter.get('/sync', sync);

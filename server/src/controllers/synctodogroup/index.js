@@ -1,5 +1,5 @@
-const syncTable = require('@model/todo_todo-group');
-const TodoGroupModel = require('@model/todo-group');
+const syncTable = require('@models/todo_todo-group');
+const TodoGroupModel = require('@models/todo-group');
 const TodogroupTodoRelationController = require('../todoGroupTodoMap/index.js');
 
 const dayjs = require('dayjs');

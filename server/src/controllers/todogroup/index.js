@@ -1,6 +1,6 @@
-const TodoGroupModel = require('@model/todo-group');
-const TodoTodoGroupModel = require('@model/todo_todo-group');
-const TodoGroupTodoRelationModel = require('@model/todo-group_todo_relation');
+const TodoGroupModel = require('@models/todo-group');
+const TodoTodoGroupModel = require('@models/todo_todo-group');
+const TodoGroupTodoRelationModel = require('@models/todo-group_todo_relation');
 const { Op } = require('sequelize');
 const { sqlquery: db } = require('../../services/connect');
 
@@ -21,15 +21,17 @@ class TodoGroupController {
     //   },
     // });
     // 换sql 语句写
-    return await db(`    SELECT r.*, g.title groupname, t.title todoname
-    FROM 
-    \`todo-group\` g 
-    LEFT JOIN \`todo-group_todo_relation\` r 
-    ON g.id = r.todogroup_id  # 通过groupid 去查group table
-    INNER JOIN \`todo\` t
-    ON t.id = r.todo_id
-    WHERE g.time >= "${currentDate}"
-    AND r.user_id = ${userId}`);
+    return await db(`
+      SELECT r.*, g.title todoGroupTitle, t.title title, t.content content
+      FROM 
+      \`todo-group\` g 
+      LEFT JOIN \`todo-group_todo_relation\` r 
+      ON g.id = r.todogroup_id  # 通过groupid 去查group table
+      INNER JOIN \`todo\` t
+      ON t.id = r.todo_id
+      WHERE g.time >= "${currentDate}"
+      AND r.user_id = ${userId}
+    `);
   }
   async getList(userId) {
     const res = await TodoGroupModel.findAll({
@@ -64,6 +66,7 @@ class TodoGroupController {
       },
     });
     Object.assign(currentData, data);
+    console.log('current', currentData);
     return await currentData.save(currentData);
   }
   async Delete(todogroupId) {

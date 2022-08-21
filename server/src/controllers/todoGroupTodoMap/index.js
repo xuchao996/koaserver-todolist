@@ -1,4 +1,4 @@
-const TodogroupTodoRelation = require('@model/todo-group_todo_relation');
+const TodogroupTodoRelation = require('@models/todo-group_todo_relation');
 module.exports = {
   async getList() {
     const res = await TodogroupTodoRelation.findAll();

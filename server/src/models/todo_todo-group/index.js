@@ -1,5 +1,6 @@
 /**
  * 这个表是中间表，拿来进行同步的
+ * 存放实时数据
  */
 const { sequelize } = require('../../services/connect');
 
@@ -49,7 +50,7 @@ TodoGroup.init(
       allowNull: true,
     },
     createTime: {
-      field: 'create-time',
+      field: 'create_time',
       type: DataTypes.DATE,
       allowNull: true,
     },
