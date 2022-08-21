@@ -2,11 +2,18 @@ require('module-alias/register');
 
 const { factoryResponse } = require('@utils');
 const TodoGroupController = require('../../controllers/todogroup');
-
+const { existUser } = require('@middleware/user');
 const koaRouter = require('koa-router');
 const router = new koaRouter('todogroup');
 
 module.exports = () => {
+  // 业务
+  router.get('/today', existUser, async (ctx) => {
+    const { userid } = ctx.state.user;
+    const result = await TodoGroupController.getTodayList(userid);
+    ctx.response.body = factoryResponse(0, result);
+  });
+
   // 查看列表
   router.get('/list', async (ctx) => {
     const { userid } = ctx.state.user;
@@ -31,8 +38,8 @@ module.exports = () => {
   // 新增
   router.post('/', async (ctx) => {
     const { body } = ctx.request;
-    console.log('body', body);
-    const res = await TodoGroupController.Create(body);
+    const { userid } = ctx.state.user;
+    const res = await TodoGroupController.Create({ ...body, userId: userid });
     ctx.response.body = factoryResponse(0, res);
   });
   // 修改

@@ -12,7 +12,7 @@ Todo.init(
       primaryKey: true,
     },
     title: {
-      type: DataTypes.STRING(20),
+      type: DataTypes.STRING(50),
     },
     content: {
       type: DataTypes.STRING,

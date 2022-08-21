@@ -1,4 +1,3 @@
-// const { sqlquery: db } = require('../../services/connect');
 const TodoModel = require('@model/todo');
 
 const Todo = {

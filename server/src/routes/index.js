@@ -1,6 +1,8 @@
 const todos = require('./todo');
 const user = require('./user');
 const todogroup = require('./todogroup');
+const sync = require('./sync');
+
 const crypto = require('crypto');
 const { JWT_SECRET } = require('../../config');
 const jwt = require('jsonwebtoken');
@@ -51,4 +53,6 @@ module.exports = (rootRouter) => {
     todogroupRouter.routes(),
     todogroupRouter.allowedMethods(),
   );
+
+  rootRouter.get('/sync', sync);
 };

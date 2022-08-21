@@ -16,9 +16,9 @@ class SyncTodoGroup {
           await TodogroupTodoRelationController.getListByParams({
             todogroupId: id,
           });
-        console.log('relationtablelist', todogroup.userId);
+        console.log('relationtablelist', todogroup.id);
         const params = relationtablelist.map((todo) => {
-          console.log('todo', todo.todoId);
+          // console.log('todo', todo.todoId);
           return {
             userId: todogroup.userId,
             todogroupId: todogroup.id,
@@ -27,11 +27,11 @@ class SyncTodoGroup {
             todogroupTime: todogroup.time,
           };
         });
-        console.log('params', params);
+        // console.log('params', params);
         await syncTable.bulkCreate(params);
       }
     });
   }
 }
-// new SyncTodoGroup().sync();
+new SyncTodoGroup().sync();
 module.export = new SyncTodoGroup();
