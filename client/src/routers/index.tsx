@@ -4,7 +4,11 @@ import Register from "../pages/register";
 import Home from "../pages/home";
 
 const router = () => {
-  const element: RouteObject[] = [
+  const element = [
+    {
+      path: "/",
+      redirect: "/home",
+    },
     {
       path: "/login",
       element: <Login />,

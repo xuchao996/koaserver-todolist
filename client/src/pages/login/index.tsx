@@ -22,8 +22,11 @@ const Login: React.FC = (props) => {
       if (data.errcode === 1000) {
         const { "jwt-token": token } = data.data;
         Toast.show("登录成功");
-        localStorage.setItem("token", token);
-        navigate("/home" + `?userid=${data.data.id}`);
+        localStorage.setItem("token", "bearer " + token);
+
+        navigate("/home", {
+          replace: true,
+        });
       } else {
         Toast.show(res.data.errmsg);
       }

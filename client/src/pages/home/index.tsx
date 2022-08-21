@@ -31,13 +31,11 @@ import {
 import TodoItem from "@/components/TodoItem";
 
 const Home = (props) => {
-  const [searchParams] = useSearchParams();
   const [todoList, setTodoList] = useState([]);
-  const userid = searchParams.get("userid");
   const { setLoading } = useContext(LoadingContext) as ILoadingContext;
 
   useAsyncEffect(async () => {
-    const res = await getTodoListData(userid);
+    const res = await getTodoListData();
     setTodoList(res);
   }, []);
 
@@ -47,9 +45,14 @@ const Home = (props) => {
     const params = {
       title: "我是title",
       content: "我是tontent",
-      userid: userid,
+      state: 1,
+      time: 24,
+      todogroupId: 25,
     };
-    FetchCreateTodo(params);
+    try {
+      const res = await FetchCreateTodo(params);
+      console.log("res", res);
+    } catch (error) {}
   };
   const deleteTodo = async (id: todoId) => {
     console.log("id", id);
@@ -59,10 +62,10 @@ const Home = (props) => {
   };
   const succeedTodo = async (id: todoId) => {
     const params = {
-      status: 1,
+      state: 1,
     };
     await updateTodo(id, params);
-    const res = await getTodoListData(userid);
+    const res = await getTodoListData();
     setTodoList(res);
   };
   const leftActions = useMemo(

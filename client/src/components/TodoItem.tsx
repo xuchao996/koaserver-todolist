@@ -12,6 +12,7 @@ const TodoItem = (props) => {
           backgroundImage: `url('static/img/${index + 1}.jpg')`,
         }}
       >
+        <div className="item-title">{todo.todoGroupTitle}</div>
         <div className="item-title">{todo.title}</div>
         <div className="item-desc">{todo.content}</div>
       </div>

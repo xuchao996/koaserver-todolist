@@ -1,4 +1,12 @@
-import { TodoListByUserid, Todo, Login, Register, todoId, todo } from "./index";
+import {
+  TodoList,
+  Todo,
+  Today,
+  Login,
+  Register,
+  type todoId,
+  type todo,
+} from "./index";
 import { formatDataWrap } from "@/utils";
 const fetchWrap = async (
   url,
@@ -31,12 +39,12 @@ const post = async (url, params?) => await fetchWrap(url, "post", params);
 const put = async (url, params?) => await fetchWrap(url, "put", params);
 const deleteApi = async (url) => await fetchWrap(url, "delete");
 
-export const getTodoListData = async (userid) => {
-  return await get(TodoListByUserid + userid).then((res) => res.data);
+export const getTodoListData = async () => {
+  return await get(TodoList).then((res) => res.data);
 };
 
 export const createTodo = async (params) => {
-  return await put(Todo, params).then((res) => res.data);
+  return await post(Todo, params).then((res) => res.data);
 };
 
 export const deleteTodo = async (id: string) => {
@@ -50,6 +58,7 @@ export const deleteTodo = async (id: string) => {
  */
 export const updateTodo = async (id: todoId, params: todo) => {
   return await post(`${Todo}/${id}`, params).then((res) => res.data);
+  // return await put(`${Today}/todo/${id}`, params).then((res) => res.data);
 };
 // export const updateTodo1 = formatDataWrap(updateTodo)
 
